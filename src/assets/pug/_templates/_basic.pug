@@ -1,0 +1,21 @@
+doctype html
+html(lang='ja')
+  head
+    meta(http-equiv='X-UA-Compatible', content='IE=Edge')
+    meta(charset='UTF-8')
+    link(rel='stylesheet', href='/assets/css/index.css')
+
+    block title
+
+  body
+    .wrapper
+
+      include /_layouts/_header
+
+      block container
+
+      include /_layouts/_footer
+
+    //- if isDev === true
+    //-   script(src="//localhost:35729/livereload.js")
+
