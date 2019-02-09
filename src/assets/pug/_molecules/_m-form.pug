@@ -1,0 +1,63 @@
+//- atoms
+//- --------------------------------------------------
+include /_atoms/_a-checkbox
+include /_atoms/_a-input
+include /_atoms/_a-radio
+include /_atoms/_a-select
+include /_atoms/_a-textarea
+
+//- molecules
+//- --------------------------------------------------
+include /_molecules/_m-field
+
+//- m-form
+//- --------------------------------------------------
+form.m-form.js-form(action='dummy' method='post')
+  +m-field(class='js-field' title='一行テキストエリア' type='text' error='エラーメッセージ' counter=true)
+    +a-input(class='js-field-input' value='dummyValue' name='single-line-text1')
+
+  +m-field(class='js-field' title='一行テキストエリア' type='text' error='エラーメッセージ' counter=true)
+    +a-input(class='js-field-input' value='dummyValue' name='single-line-text1')
+
+  +m-field(class='js-field' title='ラジオエリア' type='radio' error='エラーメッセージ' clear=true)
+    ul.m-form__list
+      li.m-form__list-item
+        label.m-form__label
+          +a-radio(class='js-field-input' value='radio1-1' name='radio1' checked=false)
+          span.m-form__label-text ラジオ1
+      li.m-form__list-item
+        label.m-form__label
+          +a-radio(class='js-field-input' value='radio1-1' name='radio1' checked=true)
+          span.m-form__label-text ラジオ2
+      li.m-form__list-item
+        label.m-form__label
+          +a-radio(class='js-field-input' value='radio1-1' name='radio1' checked=false)
+          span.m-form__label-text ラジオ3
+
+  +m-field(class='js-field' title='チェックボックスエリア' type='checkbox' error='エラーメッセージ')
+    ul.m-form__list
+      li.m-form__list-item
+        label.m-form__label
+          +a-checkbox(class='js-field-input' value='checkbox1-1' name='checkbox1[]' checked=false)
+          span.m-form__label-text チェックボックス1
+      li.m-form__list-item
+        label.m-form__label
+          +a-checkbox(class='js-field-input' value='checkbox1-2' name='checkbox1[]' checked=true)
+          span.m-form__label-text チェックボックス2
+      li.m-form__list-item
+        label.m-form__label
+          +a-checkbox(class='js-field-input' value='checkbox1-3' name='checkbox1[]' checked=true)
+          span.m-form__label-text チェックボックス3
+
+  +m-field(class='js-field' title='セレクトエリア' type='select' error='エラーメッセージ')
+    +a-select(class='js-field-input' name='select1')
+      option(value='' selected=false) 選択なし
+      option(value='select1-1' selected=false) セレクト1
+      option(value='select2-1' selected=false) セレクト2
+      option(value='select3-1' selected=true) セレクト3
+
+  +m-field(class='js-field' title='複数行テキストエリア' type='textarea' error='エラーメッセージ')
+    +a-textarea(class='js-field-input' value='ダミーテキストダミーテキスト' name='multipleLineText1')
+
+  .m-form__submit-button
+    button(type='submit').m-form__button.js-form-submit submit

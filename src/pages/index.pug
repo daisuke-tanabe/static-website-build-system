@@ -1,4 +1,8 @@
-extends /_templates/_basic
+extends /_templates/_t-wrapper
 
-block container
-  p(style='font-size:20px; padding: 40px 0;') Top page
+block vars
+  -
+    var pageTitle = 'トップページ'
+    var pageStyle = '/assets/css/index.css'
+    var pageScript = '/assets/js/index.js'
+

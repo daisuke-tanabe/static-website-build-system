@@ -21,6 +21,8 @@ module.exports = {
       ignoreTemplateLiterals: true,
       ignoreRegExpLiterals: true
     }],
+    'no-new': 'off',
+    'no-underscore-dangle': ['error', { allowAfterThis: true }],
     'prettier/prettier': ['error', {
       singleQuote: true
     }]

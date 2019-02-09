@@ -128,7 +128,7 @@ module.exports = {
     // サーバーの起点になるディレクトリを指定する(falseで無効化)
     contentBase: false,
     // https経由でサーバー提供を受ける
-    https: true,
+    // https: true,
     // バンドルされたファイルをどのディレクトリで利用するか決定する
     publicPath: '/'
   },

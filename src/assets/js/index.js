@@ -1,6 +1,8 @@
 import $ from 'jquery';
 import 'picturefill';
 
-import message from 'assets/js/common/message';
+import Form from 'assets/js/modules/Form';
 
-message(`index message!! ${$}`);
+$(() => {
+  new Form($('.js-form'));
+});

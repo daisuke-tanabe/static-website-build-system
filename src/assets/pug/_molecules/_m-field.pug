@@ -1,0 +1,20 @@
+mixin m-field
+
+  .m-field(class=attributes.class data-type=attributes.type)
+    .m-field__header
+      .m-field__title= attributes.title
+      .m-field__error.js-field-error= attributes.error
+    .m-field__container
+      block
+
+    if attributes.counter || attributes.clear
+      .m-field__footer
+
+      if attributes.counter
+        .m-field__counter
+          | 文字バイト数：
+          span.m-field__counter-number.js-filed-counter
+
+      if attributes.clear
+        .m-field__clear-button
+          button.m-form__button.m-form__button--min.js-field-clear-button(type='button') 選択解除

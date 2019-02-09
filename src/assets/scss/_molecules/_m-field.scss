@@ -1,0 +1,37 @@
+.m-field {
+  margin-bottom: 30px;
+}
+
+.m-field__header {
+  margin-bottom: 12px;
+}
+
+.m-field__container {}
+
+.m-field__footer {
+  margin-top: 8px;
+}
+
+.m-field__title {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.m-field__error {
+  color: #da3758;
+  display: none;
+  font-size: 13px;
+  margin-top: 12px;
+
+  &.is-show {
+    display: block;
+  }
+}
+
+.m-field__counter {
+  font-size: 13px;
+}
+
+.m-field__clear-button {
+  width: 72px;
+}

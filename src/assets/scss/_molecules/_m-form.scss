@@ -1,0 +1,64 @@
+// atoms
+// --------------------------------------------------
+@import "~assets/scss/_atoms/_a-checkbox";
+@import "~assets/scss/_atoms/_a-input";
+@import "~assets/scss/_atoms/_a-radio";
+@import "~assets/scss/_atoms/_a-select";
+@import "~assets/scss/_atoms/_a-textarea";
+
+// molecules
+// --------------------------------------------------
+@import "~assets/scss/_molecules/_m-field";
+
+// index
+// --------------------------------------------------
+.m-form {
+  margin: 0 auto;
+  max-width: 960px;
+  min-width: 375px;
+  padding: 60px 20px;
+}
+
+.m-form__submit-button {
+  margin: 50px auto 0;
+  max-width: 200px;
+}
+
+.m-form__list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: -12px;
+  padding-left: 4px;
+}
+
+.m-form__list-item {
+  margin-bottom: 12px;
+
+  &:not(:last-child) {
+    margin-right: 30px;
+  }
+}
+
+.m-form__label {
+  align-items: center;
+  display: flex;
+}
+
+.m-form__label-text {
+  font-size: 13px;
+  padding-left: 6px;
+}
+
+.m-form__button {
+  background: #2ab6c7;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 16px;
+  min-height: 50px;
+  width: 100%;
+
+  &--min {
+    font-size: 12px;
+    min-height: 25px;
+  }
+}

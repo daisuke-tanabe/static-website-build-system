@@ -74,7 +74,7 @@ video {
   vertical-align: baseline;
 }
 
-/* デフォルトを10pxにする */
+// デフォルトを10pxにする
 html {
   font-size: 62.5%;
 }
@@ -84,7 +84,7 @@ body {
   line-height: 1;
 }
 
-/* 新規追加要素のデフォルトはすべてインライン要素になっているので、section要素などをブロック要素へ変更しています */
+// 新規追加要素のデフォルトはすべてインライン要素になっているので、section要素などをブロック要素へ変更しています
 article,
 aside,
 details,
@@ -98,22 +98,19 @@ section {
   display: block;
 }
 
-/* nav要素内ulのマーカー（行頭記号）を表示しないようにしています */
-/* nav ul {
-    list-style:none;
-} */
+// マーカー（行頭記号）を表示しないようにしています
 ol,
 ul {
   list-style: none;
 }
 
-/* 引用符の表示が出ないようにしています */
+// 引用符の表示が出ないようにしています
 blockquote,
 q {
   quotes: none;
 }
 
-/* blockquote要素、q要素の前後にコンテンツを追加しないように指定しています */
+// blockquote要素、q要素の前後にコンテンツを追加しないように指定しています
 blockquote::before,
 blockquote::after,
 q::before,
@@ -122,7 +119,7 @@ q::after {
   content: none;
 }
 
-/* a要素のフォントサイズなどをリセットしフォントの縦方向の揃え位置を親要素のベースラインに揃えるようにしています */
+// a要素のフォントサイズなどをリセットしフォントの縦方向の揃え位置を親要素のベースラインに揃えるようにしています
 a {
   background: transparent;
   font-size: 100%;
@@ -131,15 +128,17 @@ a {
   vertical-align: baseline;
 }
 
-/*  ins要素のデフォルトをセットし、色を変える場合はここで変更できるようにしています  */
+// ins要素のデフォルトをセットし、色を変える場合はここで変更できるようにしています
 ins {
   //background-color: #ff9;
   color: #000;
   text-decoration: none;
 }
 
-/*  mark要素のデフォルトをセットし、色やフォントスタイルを変える場合はここで変更できるようにしています
-また、mark要素とは、文書内の検索結果で該当するフレーズをハイライトして、目立たせる際に使用するようです。 */
+/*
+/* mark要素のデフォルトをセットし、色やフォントスタイルを変える場合はここで変更できるようにしています
+ * また、mark要素とは、文書内の検索結果で該当するフレーズをハイライトして、目立たせる際に使用するようです。
+ * -------------------------------------------------- */
 mark {
   //background-color: #ff9;
   color: #000;
@@ -147,26 +146,28 @@ mark {
   font-weight: bold;
 }
 
-/* テキストに打ち消し線が付くようにしています */
+// テキストに打ち消し線が付くようにしています
 del {
   text-decoration: line-through;
 }
 
+/*
 /* IEではデフォルトで点線を下線表示する設定ではないので、下線がつくようにしています
-また、マウスオーバー時にヘルプカーソルの表示が出るようにしています */
+/* また、マウスオーバー時にヘルプカーソルの表示が出るようにしています
+ * -------------------------------------------------- */
 abbr[title],
 dfn[title] {
   border-bottom: 1px dotted;
   cursor: help;
 }
 
-/* 隣接するセルのボーダーを重ねて表示し、間隔を0に指定しています */
+// 隣接するセルのボーダーを重ねて表示し、間隔を0に指定しています
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* 水平罫線のデフォルトである立体的な罫線を見えなくしています */
+// 水平罫線のデフォルトである立体的な罫線を見えなくしています
 hr {
   border: 0;
   border-top: 1px solid #ccc;
@@ -176,28 +177,53 @@ hr {
   padding: 0;
 }
 
-/* 縦方向の揃え位置を中央揃えに指定しています */
+// outlineの消去
 input,
-select {
-  vertical-align: middle;
-}
-
-/* outlineの消去 */
-input {
+select,
+button {
   outline: none;
 }
 
-/* borderの消去 */
+[type="text"] {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+}
+
+[type="radio"],
+[type="checkbox"] {
+  margin: 0;
+}
+
+select {
+  appearance: none;
+  background: transparent;
+  border: none;
+  line-height: 1;
+}
+
+textarea {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  outline: none;
+  padding: 0;
+  resize: none;
+}
+
 button {
+  appearance: none;
+  background: transparent;
   border: none;
 }
 
-/* 画像を縦に並べた時に余白が出ないように */
+// 画像を縦に並べた時に余白が出ないように
 img {
   vertical-align: top;
 }
 
-/* box-sizingを全ブラウザに対応 */
+// box-sizingを全ブラウザに対応
 *,
 *::before,
 *::after {

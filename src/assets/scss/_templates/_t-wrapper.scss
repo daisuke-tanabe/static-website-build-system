@@ -1,0 +1,19 @@
+// foundation
+// --------------------------------------------------
+@import "~assets/scss/_foundation/_reset";
+
+// molecules
+// --------------------------------------------------
+@import "~assets/scss/_molecules/_m-form";
+
+// organisms
+// --------------------------------------------------
+@import "~assets/scss/_organisms/_o-header";
+@import "~assets/scss/_organisms/_o-container";
+@import "~assets/scss/_organisms/_o-footer";
+
+// index
+// --------------------------------------------------
+.t-wrapper {
+  position: relative;
+}

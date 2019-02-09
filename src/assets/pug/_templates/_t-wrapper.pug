@@ -1,0 +1,29 @@
+include /_organisms/_o-container
+include /_organisms/_o-footer
+include /_organisms/_o-header
+
+block vars
+
+doctype html
+html(lang='ja')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=Edge')
+    link(rel='stylesheet', href=pageStyle)
+    title= pageTitle
+
+  body
+    .t-wrapper
+
+      +o-header
+
+      +o-container
+        include /_molecules/_m-form
+
+      +o-footer
+
+    script(src=pageScript)
+
+    if isDev === true
+      script(src='//localhost:35729/livereload.js')
+
