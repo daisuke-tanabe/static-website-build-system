@@ -1,9 +1,9 @@
 # Usage
 
 ```
-// 開発
+// development
 npm run dev
 
-// ビルド
-npm run build
+// production
+npm run dit
 ```

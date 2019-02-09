@@ -7,14 +7,15 @@ const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const autoprefixer = require('autoprefixer');
 const postcssImport = require('postcss-import');
 const stylelint = require('stylelint');
+const LiveReloadPlugin = require('webpack-livereload-plugin');
+
+// 開発モード
+const isDev = process.env.NODE_ENV === 'development';
 
 // ディレクトリ変数
 const srcDir = path.join(__dirname, 'src');
 const buildDir = path.join(__dirname, 'build');
 const assetsDir = path.join(__dirname, 'src/assets');
-
-// 開発モード
-const devMode = process.env.NODE_ENV === 'development';
 
 // Scssエントリー
 const entryScss = glob.sync('./src/assets/scss/**/*.scss', {
@@ -51,9 +52,11 @@ const moduleConfigure = {
         {
           loader: 'pug-html-loader',
           options: {
+            // 最小化せずにインデントと改行をいれるが廃止予定になっている
             pretty: true,
-            // pugのルートパスを「src」に指定して、pugからは「/assets」でincludeできるようにした
-            basedir: srcDir
+            // 「assets/pug」をルートにする
+            basedir: path.resolve(srcDir, 'assets/pug'),
+            data: { isDev }
           }
         }
       ]
@@ -70,18 +73,18 @@ const moduleConfigure = {
             loader: 'postcss-loader',
             options: {
               ident: 'postcss',
-              plugins: [
-                autoprefixer(),
-                postcssImport(),
-                stylelint()
-              ]
+              plugins: [autoprefixer(), postcssImport(), stylelint()]
             }
           },
           {
             loader: 'resolve-url-loader'
           },
           {
-            loader: 'sass-loader'
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+              sourceMapContents: false
+            }
           }
         ]
       })
@@ -97,8 +100,8 @@ const moduleConfigure = {
         {
           loader: 'url-loader',
           options: {
-            // 10kバイトを超えたらfile-loaderを使用する
-            limit: 10240,
+            // 20kバイトを超えたらfile-loaderを使用する
+            limit: 20480,
             fallback: 'file-loader',
 
             // 以下はフォールバックのオプションです
@@ -122,10 +125,13 @@ module.exports = {
   },
 
   devServer: {
-    contentBase: 'www',
+    // サーバーの起点になるディレクトリを指定する(falseで無効化)
+    contentBase: false,
+    // バンドルされたファイルをどのディレクトリで利用するか決定する
+    publicPath: '/'
   },
 
-  devtool: devMode ? 'source-map' : false,
+  devtool: isDev ? 'source-map' : false,
 
   entry: entryConfigure,
 
@@ -135,17 +141,21 @@ module.exports = {
     // 波ダッシュとエイリアス名で設定できるようになる
     // url(~assets/hoge/fuga/xxx.jpb)
     alias: {
-      assets: assetsDir,
+      assets: assetsDir
     },
     extensions: ['.js', '.jsx', '.json']
   },
 
   plugins: [
+    new LiveReloadPlugin(),
+
     // pugファイルをエントリーする（./src/pages配下のみ）
-    ...glob.sync('./src/pages/**/*.pug').map(path => {
+    ...glob.sync('./src/pages/**/*.pug').map(filePath => {
       return new HtmlWebpackPlugin({
-        filename: path.replace(/^\.\/src\/pages\//, '').replace(/\.pug$/, '.html'),
-        template: path.replace(/^\.\/src\//, ''),
+        filename: filePath
+          .replace(/^\.\/src\/pages\//, '')
+          .replace(/\.pug$/, '.html'),
+        template: filePath.replace(/^\.\/src\//, ''),
         inject: false
       });
     }),
@@ -157,13 +167,13 @@ module.exports = {
       {
         from: 'static',
         to: 'static',
-        ignore: devMode ? [] : ['*.map']
+        ignore: isDev ? [] : ['*.map']
       }
     ]),
 
     // 画像の最適化を行う
     new ImageminPlugin({
-      disable: devMode,
+      disable: isDev,
       pngquant: {
         quality: 80,
         strip: true

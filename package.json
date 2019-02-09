@@ -6,15 +6,9 @@
     "node": "10.x.x"
   },
   "scripts": {
-    "dev": "run-s cpx serve:dev",
-    "build": "run-s clean cpx build:prod",
-    "build:prod": "NODE_ENV=production webpack",
-    "serve:dev": "NODE_ENV=development webpack-dev-server",
-    "serve:prod": "NODE_ENV=production webpack-dev-server",
-    "cpx": "run-s cpx:*",
-    "cpx:jquery": "cpx ./node_modules/jquery/dist/jquery.min.js ./src/static/js -v",
-    "cpx:@babel/polyfill": "cpx ./node_modules/@babel/polyfill/dist/polyfill.min.js ./src/static/js -v",
-    "cpx:picturefill": "cpx ./node_modules/picturefill/dist/picturefill.min.js ./src/static/js -v",
+    "dev": "run-s serve",
+    "dist": "NODE_ENV=production webpack",
+    "serve": "NODE_ENV=development webpack-dev-server",
     "clean": "rimraf ./build",
     "fix": "run-s fix:*",
     "fix:js": "eslint --fix ./src/**/*.js",
@@ -35,6 +29,7 @@
     "eslint": "^5.13.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^4.0.0",
+    "eslint-import-resolver-webpack": "^0.11.0",
     "eslint-loader": "^2.1.2",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-prettier": "^3.0.1",
@@ -64,7 +59,8 @@
     "url-loader": "^1.1.2",
     "webpack": "^4.29.3",
     "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.1.14"
+    "webpack-dev-server": "^3.1.14",
+    "webpack-livereload-plugin": "^2.2.0"
   },
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
